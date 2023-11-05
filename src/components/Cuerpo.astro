@@ -8,7 +8,7 @@
         
 </section>
 
-<script>
+<script is:inline>
     const API_KEY = 'fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC';
 
     const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
@@ -31,6 +31,8 @@
      .catch(error => {
          console.error(`Error: ${error}`);
      });
+
+     
 
  </script>
  <style>
