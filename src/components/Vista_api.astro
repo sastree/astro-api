@@ -1,0 +1,183 @@
+---
+
+---
+
+<section class="cuerpo">
+    <div class="contenedor_img">
+        <img id="imagen" src="">
+    </div>
+    
+    <div class="texto">
+        <h1 id="fecha"></h1>
+        <p id="desc"></p>
+    </div>
+   
+        
+</section>
+
+<script is:inline>
+    const API_KEY = 'fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC';
+
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+
+     fetch(url)
+     .then(response => response.json())
+     .then(data => {
+         const imageUrl = data.url;
+         const explanation = data.explanation;
+         const date = data.date;
+
+         console.log(`Fecha: ${date}`);
+         console.log(`Explicación: ${explanation}`);
+         console.log(`URL de la imagen: ${imageUrl}`);
+         document.getElementById('fecha').innerText = date;
+         document.getElementById('imagen').src = imageUrl;
+         document.getElementById('desc').innerText = explanation;
+
+     })
+     .catch(error => {
+         console.error(`Error: ${error}`);
+     });
+
+
+     
+ </script>
+ <style>
+    .contenedor_img {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    }
+    #imagen {
+        transform: scale(0.69);
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    }
+	html {
+		font-family: system-ui, sans-serif;
+		background: #dee1e7;
+		background-size: 224px;
+	}
+    .texto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 50%;
+        
+    }
+    .texto p {
+        padding: 10px;
+        width: 500px;
+        text-align:justify;
+    }
+    .texto h1 {
+        padding: 10px;
+  
+        text-align: center;
+    }
+ 
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+    .cuerpo {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 80vh;
+        width: 100%;
+    }
+    
+    
+    @media (max-width: 1024px){
+        #imagen {
+        transform: scale(0.5);
+        
+    }
+    .texto p {
+        padding: 10px;
+        width: 400px;
+        font-size: 14px;
+    }
+    .texto h1 {
+        padding: 10px;
+  
+        text-align: center;
+    }
+    }
+    @media (max-width: 768px){  
+        #imagen {
+        transform: scale(0.4);
+        
+    }
+    .texto p {
+        padding: 10px;
+        width: 250px;
+        text-align:justify;
+        font-size: 10px;
+    }
+    .texto h1 {
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+    }
+    @media (max-width: 426px){  
+        #imagen {
+        transform: scale(0.35);
+        
+        }
+    .texto p {
+        padding: 10px;
+        width: 300px;
+        text-align:justify;
+        font-size: 10px;
+    }
+    .texto h1 {
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .cuerpo {
+        height: auto;
+        flex-direction: column;
+        overflow: auto;
+
+    }
+    .contenedor_img {
+        height: 43vh;
+        width: 100%;
+    }
+    .texto {
+        margin-top: 0px;
+    }
+}
+@media (max-width: 376px){
+    #imagen {
+        transform: scale(0.34);
+        
+        }
+}  
+@media (max-width: 321px){
+    #imagen {
+        transform: scale(0.29);
+        
+        }
+        .contenedor_img {
+        height: 35vh;
+        width: 100%;
+    }
+}  
+</style>
