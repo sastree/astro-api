@@ -1,24 +1,47 @@
-<div class="pie"> <!-- html del Footer -->
+<div class="pie">
+    <!-- html del Footer -->
+    <div class="social">
+        <a href="https://github.com/sastree" target="_blank"><i class="ri-github-fill"></i></a>
+        <a href="https://twitter.com/?lang=es" target="_blank"><i class="ri-twitter-fill"></i></a>
+        <a href="https://www.linkedin.com/in/alejandro-sastree/" target="_blank"><i class="ri-linkedin-fill"></i></a>
+        <a href="https://www.youtube.com" target="_blank"><i class="ri-youtube-fill"></i></a>
+    </div>
     <h3>© Alejandro Sastre. 2023 All rights reserved</h3>
 </div>
 
 <!--estilo del Footer -->
-<style> 
+<style>
     /*Contenedor principal*/
-    .pie {    
+    .pie {
         width: 100%;
-        background: #22262f; 
+        background: #22262f;
         height: auto;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         height: 10vh;
-        
     }
     /*Texto del pie de pagina*/
     h3 {
         text-align: center;
         color: #a3abb2;
         font-size: 17px;
+        padding-right: 20px;
+    }
+    .social {
+        padding: 10px 10px;
+        padding-left: 20px;
+    }
+
+    .social i {
+        display: inline-block;
+        font-size: 25px;
+        color: #a3abb2;
+        margin-right: 15px;
+        transition: all ease 0.55s;
+    }
+
+    .social i:hover {
+        transform: scale(1.08) translateY(-4px);
     }
 </style>
