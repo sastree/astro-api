@@ -8,6 +8,7 @@
     </div>
 
     <div class="texto">
+        <div id="contador"></div>
         <h1 id="fecha"></h1>
         <p id="desc"></p>
     </div>
@@ -35,6 +36,34 @@
         .catch((error) => {
             console.error(`Error: ${error}`);
         });
+
+        function actualizarContador() {
+      // Obtén la fecha y hora actual
+      const ahora = new Date();
+      // Establece la hora objetivo a medianoche
+      const medianoche = new Date(ahora);
+      medianoche.setHours(0, 0, 0, 0);
+      // Calcula la diferencia en milisegundos
+      const diferencia = ahora - medianoche;
+      // Convierte la diferencia a segundos
+      const segundosTranscurridos = Math.floor(diferencia / 1000);
+      // Calcula los segundos restantes en el día (24 horas - segundos transcurridos)
+      const segundosRestantes = 86400 - segundosTranscurridos;
+
+      // Convierte los segundos restantes a horas, minutos y segundos
+      const horas = Math.floor(segundosRestantes / 3600);
+      const minutos = Math.floor((segundosRestantes % 3600) / 60);
+      const segundos = segundosRestantes % 60;
+
+      // Muestra el contador en el elemento HTML con id "contador"
+      document.getElementById("contador").innerHTML = `Nueva imagen en: ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    // Actualiza el contador cada segundo
+    setInterval(actualizarContador, 1000);
+
+    // Inicializa el contador al cargar la página
+    actualizarContador();
 </script>
 <style>
     .contenedor_img {
@@ -179,5 +208,5 @@
             font-size: 16px;
         }
     }
-    
+
 </style>
