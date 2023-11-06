@@ -1,27 +1,23 @@
 <script is:inline>
-    const API_KEY = 'fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC';
+    const API_KEY = "fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC";
 
     const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
-     fetch(url)
-     .then(response => response.json())
-     .then(data => {
-         const imageUrl = data.url;
-         const explanation = data.explanation;
-         const date = data.date;
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            const imageUrl = data.url;
+            const explanation = data.explanation;
+            const date = data.date;
 
-         console.log(`Fecha: ${date}`);
-         console.log(`Explicación: ${explanation}`);
-         console.log(`URL de la imagen: ${imageUrl}`);
-         document.getElementById('fecha').innerText = date;
-         document.getElementById('imagen').src = imageUrl;
-         document.getElementById('desc').innerText = explanation;
-
-     })
-     .catch(error => {
-         console.error(`Error: ${error}`);
-     });
-
-     
-
- </script>
+            console.log(`Fecha: ${date}`);
+            console.log(`Explicación: ${explanation}`);
+            console.log(`URL de la imagen: ${imageUrl}`);
+            document.getElementById("fecha").innerText = date;
+            document.getElementById("imagen").src = imageUrl;
+            document.getElementById("desc").innerText = explanation;
+        })
+        .catch((error) => {
+            console.error(`Error: ${error}`);
+        });
+</script>
