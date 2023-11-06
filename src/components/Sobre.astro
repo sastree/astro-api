@@ -1,13 +1,17 @@
 ---
 
 ---
-<section>
+<section class="seccion">
     <div class="intro">
         <br>
         <h1>¿Que es APOD?</h1><br>
         <p>APOD significa "Astronomy Picture of the Day" (Imagen Astronómica del Día). Es un sitio web y servicio en línea proporcionado por la NASA que muestra una imagen o fotografía astronómica destacada todos los días, junto con una breve descripción escrita por un astrónomo profesional. APOD presenta una variedad de imágenes relacionadas con la astronomía y la exploración espacial, que van desde imágenes de planetas, galaxias, estrellas y nebulosas hasta fotos de eventos astronómicos especiales, como eclipses solares o lunares.</p><br><br>
+       </div>
+    <div class="finalidad">
+        <br>
         <h1>¿Finalidad de esta pagina?</h1><br>
         <p>La finalidad de esta página es proporcionar a los visitantes una experiencia diaria de asombro y aprendizaje acerca del universo, a través de la incorporación de la "Imagen Astronómica del Día" (APOD) de la NASA. Esto se logra al utilizar la API de la NASA para obtener la imagen, la fecha y su descripción, ofreciendo así una ventana a la belleza y el misterio del cosmos directamente a los usuarios, fomentando su interés en la astronomía y la exploración espacial.</p>
+    
     </div>
    
 
@@ -15,21 +19,77 @@
 
 <style>
     section {
-        height: 80vh;
+        height: auto;
         width: 100%;
         display: flex;
         align-items: center;
-      
         flex-direction: column;
     }
     .intro {
         width: 40%;
         
     }
+    .finalidad {
+        width: 40%;
+    }
     .intro p {
+        text-align:justify;
+    }
+    .finalidad p{
         text-align:justify;
     }
     .intro h1 {
         text-align: center;
     }
+    .finalidad h1{
+        text-align: center;
+    }
+    
+    @media (max-width: 1024px){
+        .seccion {
+            display: flex;
+            flex-direction: row;
+        }
+        .finalidad {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 50%;
+            height: 500px;
+            padding: 20px;
+            padding-top: 100px;
+        }
+        .intro {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 50%;
+            height: 500px;
+            padding: 20px;
+            padding-top: 100px;
+        }
+    }
+    @media (max-width: 426px){  
+        .seccion {
+            display: flex;
+            flex-direction: column;
+           
+        }
+        .intro {
+        width: 90%;
+        padding-top: 0;
+        height: auto;
+    }
+    .finalidad {
+        width: 90%;
+        padding-top: 0;
+        height: auto;
+    }
+    }
+@media (max-width: 376px){
+    
+}  
+@media (max-width: 321px){
+    
+}  
 </style>
