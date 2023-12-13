@@ -2,7 +2,7 @@
 const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC') /* peticion a la api */
 const data = await response.json(); /* esperamos respuesta y guardamos en variable data en formato json*/
 console.log(data); /* Mostramos por consola */
-const imgUrl = data.hdurl; /* url de la imagen diaria de la nasa (APOD)*/
+const imgUrl = data.hdurl; /* url de la imagen diaria de la nasa (APOD) en hd*/
 const explicacion = data.explanation; /* Texto explicatorio de la imagen */
 const date = data.date; /* Fecha de la imagen */
 const tipo = data.media_type;
@@ -10,6 +10,7 @@ console.log(imgUrl.wid);
 ---
 <!-- Html donde muestro los datos consultados a la api -->
 <section class="cuerpo">
+
     <div class="contenedor_img">
         <img id="imagen" src={imgUrl} hidden={tipo === 'video'}/>
         <iframe id="yt" width="100%" height="100%" hidden={tipo !== 'video'}
@@ -22,6 +23,7 @@ console.log(imgUrl.wid);
         <h1 id="fecha">{date}</h1>
         <p id="desc">{explicacion}</p>
     </div>
+
 </section>
 
 <!-- Script para mostrar el contador (tiempo restante para la siguiente imagen) -->
@@ -57,18 +59,31 @@ console.log(imgUrl.wid);
 <!-- Estilo de los datos mostrados -->
 <style>
     .contenedor_img {
-        width: 50%;
-        margin: 0;
-        padding: 0;
+        width: 50vw;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 80vh;
+    } 
+    .texto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 50vw;
+        height: auto;
+    }
+    .cuerpo {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 80vh;
+        width: 100%;
     }
     #imagen {
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-        max-width: 100%;
-        height: auto;
+        max-width: 50vw;
+        max-height: 75vh;
         vertical-align: middle;
         font-style: italic;
         background-repeat: no-repeat;
@@ -80,13 +95,7 @@ console.log(imgUrl.wid);
         background: #dee1e7;
         background-size: 224px;
     }
-    .texto {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        max-width: 50%;
-    }
+   
     .texto p {
         padding: 10px;
         width: 500px;
@@ -109,13 +118,7 @@ console.log(imgUrl.wid);
             Courier New,
             monospace;
     }
-    .cuerpo {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 80vh;
-        width: 100%;
-    }
+    
     /* Responsive */
     @media (max-width: 1024px) {
         #imagen {
@@ -151,7 +154,7 @@ console.log(imgUrl.wid);
             width: 100%;
         }
         #imagen {
-            
+            max-width: 100%;
             padding: 10px;
             padding-top: 30px;
             box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
@@ -174,7 +177,6 @@ console.log(imgUrl.wid);
             overflow: auto;
         }
         .contenedor_img {
-            height: 43vh;
             width: 100%;
         }
         .texto {
@@ -205,7 +207,7 @@ console.log(imgUrl.wid);
           box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
         }
         .contenedor_img {
-            height: 35vh;
+            height: auto;
             width: 100%;
         }
         .texto p {
@@ -214,6 +216,10 @@ console.log(imgUrl.wid);
         #contador {
         width: 100vw;
         text-align: center;
+        }
+        .texto {
+            height: auto;
+        }
     }
     }
 
