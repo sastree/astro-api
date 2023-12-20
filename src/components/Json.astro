@@ -1,45 +1,52 @@
 ---
-let imgUrl = "";
-    let explicacion = "";
-    let date  = "";
-    let tipo  = "";
-// Función para hacer la solicitud a la API de la NASA
-async function fetchData() {
-  try {
-    const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC');
-    const data = await response.json();
 
-    // Acceder a los datos de la respuesta
-     imgUrl = data.hdurl;
-     explicacion = data.explanation;
-     date = data.date;
-     tipo = data.media_type;
+---
+<!-- Html donde muestro los datos consultados a la api -->
+<script lang="js">
+    var imgUrl = "";
+    var explicacion = "";
+    var date = "";
+    var tipo = "";
+async function obtenerDatosNasa() {
+  try {
+    var response = await fetch('https://api.nasa.gov/planetary/apod?api_key=fvKuujPyqJwYfeToP16jxt9wHGqHHuYguJbO15IC');
+    var data = await response.json();
+
+    // Actualizar contenido en la página con los nuevos datos
+    imgUrl = data.hdurl;
+    explicacion = data.explanation;
+    date = data.date;
+    tipo = data.media_type;
+
+    document.getElementById("imagen").src = imgUrl;
+            document.getElementById("imagen").hidden = tipo === 'video';
+            document.getElementById("fecha").innerHTML = date;
+            document.getElementById("desc").innerHTML = explicacion;
+
+    // Por ejemplo, actualiza el src de una imagen en tu HTM
+
+    // Puedes hacer lo mismo con otros elementos en tu página
 
   } catch (error) {
-    console.error('Error al obtener datos de la API:', error);
+    console.error('Error al obtener datos de la API de la NASA:', error);
   }
 }
 
-// Evento que se ejecuta al cargar la página
-window.onload = () => {
-  // Llamar a la función fetchData al cargar la página
-  fetchData();
-};
----
-<!-- Html donde muestro los datos consultados a la api -->
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', obtenerDatosNasa);
+
+
+</script>
 <section class="cuerpo">
 
     <div class="contenedor_img">
-        <img id="imagen" src={imgUrl} hidden={tipo === 'video'}/>
-        <iframe id="yt" width="100%" height="100%" hidden={tipo !== 'video'}
-        src={imgUrl}>
-        </iframe>
+        <img id="imagen" />
     </div>
 
     <div class="texto">
         <div id="contador"></div>
-        <h1 id="fecha">{date}</h1>
-        <p id="desc">{explicacion}</p>
+        <h1 id="fecha"></h1>
+        <p id="desc"></p>
     </div>
 
 </section>
@@ -84,8 +91,8 @@ window.onload = () => {
         height: 80vh;
     }
     #desc {
-        font-size: 1rem;
-        }
+        font-size: 1.2rem;
+    }
     .texto {
         display: flex;
         align-items: center;
@@ -175,7 +182,7 @@ window.onload = () => {
             width: 100%;
         }
         #desc {
-            font-size: 1.4rem;
+        font-size: 1.4rem;
         }
         #imagen {
             max-width: 100%;
@@ -245,6 +252,6 @@ window.onload = () => {
             height: auto;
         }
     }
-    
+    }
 
 </style>
